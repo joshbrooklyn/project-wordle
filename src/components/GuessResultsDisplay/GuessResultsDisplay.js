@@ -1,38 +1,19 @@
 import React from 'react';
+import Guess from '../Guess';
 import {range} from '../../utils';
 import {NUM_OF_GUESSES_ALLOWED} from '../../constants';
 
-function GuessResultsDisplay({guesses}) {
+function GuessResultsDisplay({guesses, answer}) {
   
-  const numRowsToAdd = NUM_OF_GUESSES_ALLOWED - guesses.length;
-  const extraRows = range(0, NUM_OF_GUESSES_ALLOWED - guesses.length, 1); 
+  //const numRowsToAdd = NUM_OF_GUESSES_ALLOWED - guesses.length;
+  //const extraRows = range(0, NUM_OF_GUESSES_ALLOWED - guesses.length, 1); 
+  //const rows = [...guesses, ...extraRows];
   
   return (
     <div className="guess-results">
     {
-      guesses.map( ({guess, id}) => {
-        const chars = guess.split('');
-        return (
-          <p class="guess" key={id}>
-            <span className="cell">{chars[0]}</span>
-            <span className="cell">{chars[1]}</span>
-            <span className="cell">{chars[2]}</span>
-            <span className="cell">{chars[3]}</span>
-            <span className="cell">{chars[4]}</span>
-          </p>
-        )
-      })
-    }
-
-    {
-      extraRows.map( (index) => (
-        <p class="guess" key={index}>
-          <span className="cell"></span>
-          <span className="cell"></span>
-          <span className="cell"></span>
-          <span className="cell"></span>
-          <span className="cell"></span>
-        </p>
+      range(NUM_OF_GUESSES_ALLOWED).map( num => (
+        <Guess value={guesses[num]} key={num} answer={answer}/>
       ))
     }
     </div>

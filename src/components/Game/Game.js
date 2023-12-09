@@ -15,7 +15,7 @@ function Game() {
 
   function handleSubmitGuess(guess) {
     if (guesses.length < 6) {
-      setGuesses([...guesses, {guess, id:crypto.randomUUID()}]);
+      setGuesses([...guesses, guess]);
     } else {
       window.alert("No more guesses allowed");
     }
@@ -24,7 +24,7 @@ function Game() {
 
   return (
   <>
-  <GuessResultsDisplay guesses={guesses}/>
+  <GuessResultsDisplay guesses={guesses} answer={answer}/>
   <GuessInput handleSubmitGuess={handleSubmitGuess}/>
   </>
   )
