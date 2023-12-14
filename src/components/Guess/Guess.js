@@ -2,11 +2,11 @@ import React from 'react';
 import { range } from '../../utils';
 import { checkGuess } from '../../game-helpers';
 
-function Guess( {value, key, answer} ) {
+function Guess( {value, answer} ) {
   const checkedLetters = checkGuess(value, answer);
   
   return (
-    <p className="guess" key={key}>
+    <p className="guess">
       {
         range(5).map ( num => {
           let classString;
@@ -18,7 +18,7 @@ function Guess( {value, key, answer} ) {
           }
 
           return (
-            <span className={ classString }>
+            <span className={ classString } key={num}>
               { value ? checkedLetters[num].letter : undefined }
             </span>
           )
